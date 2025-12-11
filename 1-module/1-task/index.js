@@ -12,5 +12,3 @@ function factorial(n) {
   }
   return value;
 }
-
-factorial(number);
