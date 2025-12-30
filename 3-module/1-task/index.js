@@ -1,11 +1,6 @@
 function namify(users) {
-  let arr = [];
-  users.map(function (user) {
-    for (let key in user) {
-      if (key === "name") {
-        arr.push(user.name);
-      }
-    }
+  //   debugger;
+  return users.map((user) => {
+    return user.name;
   });
-  return arr;
 }
