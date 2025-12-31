@@ -1,3 +1,9 @@
 function getMinMax(str) {
-  // ваш код...
+  let arr = str.split(" ");
+  let numbers = arr.filter((item) => !isNaN(item)).map((item) => +item);
+  let resultMinMax = {};
+  resultMinMax.min = Math.min(...numbers);
+  resultMinMax.max = Math.max(...numbers);
+
+  return resultMinMax;
 }
