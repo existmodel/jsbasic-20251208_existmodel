@@ -3,14 +3,14 @@ import createElement from "../../assets/lib/create-element.js";
 export default class Modal {
   constructor() {
     this.isOpen = false; // состояние модального окна
+    this.render();
   }
 
   open() {
+    document.body.append(this.elem);
     this.isOpen = true;
-    this.render();
-    document.body.appendChild(this.elem);
     document.body.classList.add("is-modal-open");
-    this.bindEvents();
+    document.addEventListener("keydown", this.onKeydown);
   }
 
   render() {
@@ -25,7 +25,6 @@ export default class Modal {
             <img src="/assets/images/icons/cross-icon.svg" alt="close-icon" />
           </button>
           <h3 class="modal__title">
-            ${this.title}
           </h3>
         </div>
         <div class="modal__body">
@@ -35,12 +34,13 @@ export default class Modal {
     var modalBodyContainer = this.elem.querySelector(".modal__body");
     modalBodyContainer.replaceChildren(this.modalBody);
 
+    this.bindEvents();
     return this.elem;
   }
 
   setTitle(title) {
     this.title = title;
-    if (this.isOpen) {
+    if (this.elem) {
       let titleElem = this.elem.querySelector(".modal__title");
       if (titleElem) {
         titleElem.textContent = title;
@@ -50,7 +50,7 @@ export default class Modal {
 
   setBody(modalBody) {
     this.modalBody = modalBody;
-    if (this.isOpen) {
+    if (this.elem) {
       var modalBodyContainer = this.elem.querySelector(".modal__body");
       modalBodyContainer.replaceChildren(this.modalBody);
     }
@@ -74,6 +74,5 @@ export default class Modal {
         this.close();
       }
     };
-    document.addEventListener("keydown", this.onKeydown);
   }
 }
