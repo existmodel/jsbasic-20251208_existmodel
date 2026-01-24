@@ -192,24 +192,24 @@ export default class Cart {
 
   async onSubmit(event) {
     event.preventDefault();
-
-    let button = document.querySelector('[type="submit"]');
-    button.classList.add("is-loading");
-
     let cartForm = document.querySelector(".cart-form");
+
+    let button = cartForm.querySelector('[type="submit"]');
+    button.classList.add("is-loading");
 
     let response = await fetch("https://httpbin.org/post", {
       method: "POST",
       body: new FormData(cartForm),
     });
 
-    await response.json();
+    if (response.ok) {
+      //   await response.json();
 
-    this.modal.setTitle("Success!");
+      this.modal.setTitle("Success!");
 
-    this.cartItems = [];
+      this.cartItems = [];
 
-    let bodyInner = createElement(`
+      let bodyInner = createElement(`
       <div class="modal__body-inner">
        <p>
         Order successful! Your order is being cooked :) <br>
@@ -218,7 +218,8 @@ export default class Cart {
        </p>
        </div>
      `);
-    this.modal.setBody(bodyInner);
+      this.modal.setBody(bodyInner);
+    }
   }
 
   addEventListeners() {
