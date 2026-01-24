@@ -64,7 +64,9 @@ export default class Modal {
   }
 
   bindEvents() {
-    this.elem.addEventListener("click", (event) => {
+    var closeButton = this.elem.querySelector(".modal__close");
+    closeButton.addEventListener("click", (event) => {
+      //повесить на кнопку а не на весь элемент
       if (event.target.closest("button")) {
         this.close();
       }

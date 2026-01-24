@@ -27,8 +27,8 @@ export default class Cart {
 
       if (cartItem.count <= 0) {
         this.cartItems = this.cartItems.filter((item) => item.id !== productId);
-        this.onProductUpdate(cartItem);
       }
+      this.onProductUpdate(cartItem);
     }
   }
 
