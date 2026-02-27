@@ -27,7 +27,7 @@ export default class UserTable {
     tbody.innerHTML = this.rows
       .map(
         ({ name, age, salary, city }) =>
-          `<tr><td>${name}</td><td>${age}</td> <td>${salary}</td><td >${city}</td><td><button>X</button></td></tr>`
+          `<tr><td>${name}</td><td>${age}</td> <td>${salary}</td><td >${city}</td><td><button>X</button></td></tr>`,
       )
       .join("");
     this.elem.appendChild(tbody);
@@ -38,7 +38,9 @@ export default class UserTable {
   onClick() {
     this.elem.addEventListener("click", function (event) {
       let button = event.target.closest("button");
-      if (!button) return;
+      if (!button) {
+        return;
+      }
       button.closest("tr").remove();
     });
   }

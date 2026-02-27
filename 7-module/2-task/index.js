@@ -31,7 +31,7 @@ export default class Modal {
         </div>
       </div>`);
     this.elem.appendChild(inner);
-    var modalBodyContainer = this.elem.querySelector(".modal__body");
+    let modalBodyContainer = this.elem.querySelector(".modal__body");
     modalBodyContainer.replaceChildren(this.modalBody);
 
     this.bindEvents();
@@ -51,7 +51,7 @@ export default class Modal {
   setBody(modalBody) {
     this.modalBody = modalBody;
     if (this.elem) {
-      var modalBodyContainer = this.elem.querySelector(".modal__body");
+      let modalBodyContainer = this.elem.querySelector(".modal__body");
       modalBodyContainer.replaceChildren(this.modalBody);
     }
   }
@@ -64,7 +64,7 @@ export default class Modal {
   }
 
   bindEvents() {
-    var closeButton = this.elem.querySelector(".modal__close");
+    const closeButton = this.elem.querySelector(".modal__close");
     closeButton.addEventListener("click", (event) => {
       //повесить на кнопку а не на весь элемент
       if (event.target.closest("button")) {

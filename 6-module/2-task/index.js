@@ -31,12 +31,14 @@ export default class ProductCard {
   onClick() {
     this.card.addEventListener("click", (event) => {
       let button = event.target.closest("button");
-      if (!button) return;
+      if (!button) {
+        return;
+      }
       event.target.dispatchEvent(
         new CustomEvent("product-add", {
           detail: this.product.id,
           bubbles: true,
-        })
+        }),
       );
     });
   }

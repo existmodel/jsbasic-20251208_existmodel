@@ -1,5 +1,5 @@
 function sumSalary(salaries) {
-  var sum = 0;
+  let sum = 0;
   for (let key in salaries) {
     if (Number.isFinite(salaries[key])) {
       sum = sum + salaries[key];

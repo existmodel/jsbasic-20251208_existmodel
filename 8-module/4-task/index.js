@@ -110,7 +110,7 @@ export default class Cart {
   renderModal() {
     this.modal = new Modal();
     this.modal.setTitle("Your order");
-    var container = document.createElement("div");
+    let container = document.createElement("div");
     let cards = this.cartItems.map((item) => {
       return this.renderProduct(item, item.count);
     });
